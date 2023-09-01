@@ -14,7 +14,7 @@
 
 
 import os
-import pyside2uic
+import PySide6
 import subprocess
 
 
@@ -30,7 +30,7 @@ def ui_to_py(ui_file):
     py_file_name = os.path.splitext(ui_file)[0] + '.py'
     with open(py_file_name, 'w') as py_file:
         try:
-            pyside2uic.compileUi(ui_file, py_file)
+            PySide6uic.compileUi(ui_file, py_file)
             print('{0} converted to {1}.'.format(ui_file.upper(), py_file_name.upper()))
         except Exception as e:
             print('Error: compilation error.', e)

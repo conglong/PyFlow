@@ -14,11 +14,11 @@
 
 
 from nine import str
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import QUndoView
-from Qt.QtWidgets import QWidget
-from Qt.QtWidgets import QVBoxLayout
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import QUndoView
+from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QVBoxLayout
 
 from PyFlow.UI.Tool.Tool import DockTool
 from PyFlow.UI.Views.VariablesWidget import VariablesWidget

@@ -26,12 +26,12 @@ import time
 import inspect
 import struct
 import weakref
+import sys
 try:
     from queue import Queue
-except:
-    from Queue import Queue
+except Exception as ex0:
+    sys.stdout.write("from queue import Queue failed to import: %s\n" % ex0)
 import uuid
-import sys
 
 from nine import IS_PYTHON2, str
 if IS_PYTHON2:

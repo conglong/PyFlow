@@ -14,9 +14,10 @@
 
 
 from nine import str
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import QAction, QTextBrowser
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+import PySide6.QtWidgets as QtWidgets
+from PySide6.QtWidgets import QTextBrowser
 from PyFlow.UI.Tool.Tool import DockTool
 from PyFlow.UI.Views.NodeBox import NodesBox
 from PyFlow.UI.Utils.stylesheet import editableStyleSheet
@@ -63,26 +64,28 @@ def addLoggingLevel(levelName, levelNum, methodName=None):
         methodName = levelName.lower()
 
     if hasattr(logging, levelName):
-        raise AttributeError('{} already defined in logging module'.format(levelName))
-    if hasattr(logging, methodName):
-        raise AttributeError('{} already defined in logging module'.format(methodName))
-    if hasattr(logging.getLoggerClass(), methodName):
-        raise AttributeError('{} already defined in logger class'.format(methodName))
+        print('{} already defined in logging module'.format(levelName))
+    elif hasattr(logging, methodName):
+        print('{} already defined in logging module'.format(methodName))
+    elif hasattr(logging.getLoggerClass(), methodName):
+        print('{} already defined in logger class'.format(methodName))
+    else:
 
-    # This method was inspired by the answers to Stack Overflow post
-    # http://stackoverflow.com/q/2183233/2988730, especially
-    # http://stackoverflow.com/a/13638084/2988730
-    def logForLevel(self, message, *args, **kwargs):
-        if self.isEnabledFor(levelNum):
-            self._log(levelNum, message, args, **kwargs)
+        # This method was inspired by the answers to Stack Overflow post
+        # http://stackoverflow.com/q/2183233/2988730, especially
+        # http://stackoverflow.com/a/13638084/2988730
+        def logForLevel(self, message, *args, **kwargs):
+            if self.isEnabledFor(levelNum):
+                self._log(levelNum, message, args, **kwargs)
 
-    def logToRoot(message, *args, **kwargs):
-        logging.log(levelNum, message, *args, **kwargs)
+        def logToRoot(message, *args, **kwargs):
+            logging.log(levelNum, message, *args, **kwargs)
 
-    logging.addLevelName(levelNum, levelName)
-    setattr(logging, levelName, levelNum)
-    setattr(logging.getLoggerClass(), methodName, logForLevel)
-    setattr(logging, methodName, logToRoot)
+        logging.addLevelName(levelNum, levelName)
+        setattr(logging, levelName, levelNum)
+        setattr(logging.getLoggerClass(), methodName, logForLevel)
+        setattr(logging, methodName, logToRoot)
+
 
 addLoggingLevel('CONSOLEOUTPUT', logging.ERROR + 5)
 
@@ -147,7 +150,7 @@ class LoggerTool(DockTool):
         self.logView.setReadOnly(True)
         self.logView.setStyleSheet("background-color: %s; Font: 10pt 'Consolas'" %
                                    "rgba%s" % str(editableStyleSheet().LoggerBgColor.getRgb()))
-        self.clearAction = QAction("Clear", None)
+        self.clearAction = QtGui.QAction("Clear", None)
         self.clearAction.triggered.connect(self.clearView)
         self.logView.addAction(self.clearAction)
         self.logView.anchorClicked.connect(self.anchorClickedMethod)
@@ -230,14 +233,14 @@ class LoggerTool(DockTool):
                         '<span style=" color:%s;">%s<span>' % (colorchart[mode], l))
 
     def flushPython(self):
-        self.logView.moveCursor(QtWidgets.QTextCursor.End,
-                                QtWidgets.QTextCursor.MoveAnchor)
-        self.logView.moveCursor(QtWidgets.QTextCursor.Up,
-                                QtWidgets.QTextCursor.MoveAnchor)
+        self.logView.moveCursor(QtGui.QTextCursor.End,
+                                QtGui.QTextCursor.MoveAnchor)
+        self.logView.moveCursor(QtGui.QTextCursor.Up,
+                                QtGui.QTextCursor.MoveAnchor)
         self.logView.moveCursor(
-            QtWidgets.QTextCursor.StartOfLine, QtWidgets.QTextCursor.MoveAnchor)
-        self.logView.moveCursor(QtWidgets.QTextCursor.End,
-                                QtWidgets.QTextCursor.KeepAnchor)
+            QtGui.QTextCursor.StartOfLine, QtGui.QTextCursor.MoveAnchor)
+        self.logView.moveCursor(QtGui.QTextCursor.End,
+                                QtGui.QTextCursor.KeepAnchor)
         self.logView.textCursor().removeSelectedText()
 
     def loglevelChanged(self, int):

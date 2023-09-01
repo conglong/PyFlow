@@ -13,8 +13,9 @@
 ## limitations under the License.
 
 
-from Qt import QtWidgets
-from Qt import QtGui, QtCore
+import PySide6.QtGui as QtGui
+import PySide6.QtCore as QtCore
+import PySide6.QtWidgets as QtWidgets
 
 from PyFlow.UI.Canvas.Painters import PinPainter
 from PyFlow import findPinClassByType, getAllPinClasses

@@ -13,7 +13,7 @@
 ## limitations under the License.
 
 
-from Qt import QtCore
+import PySide6.QtCore as QtCore
 
 from PyFlow.UI.Canvas.UINodeBase import UINodeBase
 from PyFlow.UI.Widgets.SelectPinDialog import SelectPinDialog

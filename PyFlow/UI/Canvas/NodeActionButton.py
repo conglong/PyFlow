@@ -13,10 +13,12 @@
 ## limitations under the License.
 
 
-from Qt import QtCore, QtGui
-from Qt import QtSvg
-from Qt.QtWidgets import QGraphicsWidget
-from Qt.QtWidgets import QSizePolicy
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+import PySide6.QtSvg as QtSvg
+from PySide6.QtSvgWidgets import QGraphicsSvgItem
+from PySide6.QtWidgets import QGraphicsWidget
+from PySide6.QtWidgets import QSizePolicy
 
 
 class NodeActionButtonBase(QGraphicsWidget):
@@ -31,7 +33,7 @@ class NodeActionButtonBase(QGraphicsWidget):
         self.setGraphicsItem(self)
         self.setSizePolicy(QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum))
         self.action = action
-        self.svgIcon = QtSvg.QGraphicsSvgItem(svgFilePath, self)
+        self.svgIcon = QGraphicsSvgItem(svgFilePath, self)
         self.setToolTip(self.action.toolTip())
         self.hovered = False
         uiNode._actionButtons.add(self)

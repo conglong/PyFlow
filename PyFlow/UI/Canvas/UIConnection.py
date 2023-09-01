@@ -16,12 +16,12 @@
 import weakref
 from uuid import UUID, uuid4
 
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import QGraphicsPathItem
-from Qt.QtWidgets import QGraphicsEllipseItem
-from Qt.QtWidgets import QMenu
-from Qt.QtWidgets import QStyle
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import QGraphicsPathItem
+from PySide6.QtWidgets import QGraphicsEllipseItem
+from PySide6.QtWidgets import QMenu
+from PySide6.QtWidgets import QStyle
 
 from PyFlow.UI.Utils.stylesheet import editableStyleSheet, Colors, ConnectionTypes
 from PyFlow.UI.Canvas.UICommon import NodeDefaults

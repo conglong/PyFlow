@@ -13,7 +13,9 @@
 ## limitations under the License.
 
 
-from Qt import QtGui, QtWidgets, QtCore
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+import PySide6.QtWidgets as QtWidgets
 
 
 class SelectionRect(QtWidgets.QGraphicsWidget):

@@ -2,7 +2,7 @@ import ptvsd
 from maya import OpenMayaUI as omui
 from shiboken2 import wrapInstance
 from PyFlow.App import PyFlow
-from PySide2.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget
 
 try:
     long  # Python 2

@@ -13,9 +13,9 @@
 # limitations under the License.
 
 from math import atan2, degrees
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import QStyle
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import QStyle
 
 from PyFlow import getPinFromData
 

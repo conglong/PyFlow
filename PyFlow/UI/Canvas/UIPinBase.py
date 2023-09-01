@@ -15,14 +15,14 @@
 
 import weakref
 
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import QApplication
-from Qt.QtWidgets import QGraphicsWidget
-from Qt.QtWidgets import QMenu
-from Qt.QtWidgets import QInputDialog
-from Qt.QtWidgets import QSizePolicy
-from Qt.QtWidgets import QPlainTextEdit
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import QApplication, QGraphicsItem
+from PySide6.QtWidgets import QGraphicsWidget
+from PySide6.QtWidgets import QMenu
+from PySide6.QtWidgets import QInputDialog
+from PySide6.QtWidgets import QSizePolicy
+from PySide6.QtWidgets import QPlainTextEdit
 
 from PyFlow.Core.Common import *
 from PyFlow.UI.Utils.stylesheet import Colors, editableStyleSheet
@@ -61,7 +61,7 @@ class UIPinBase(QGraphicsWidget):
         super(UIPinBase, self).__init__()
         self.setGraphicsItem(self)
         self.setFlag(QGraphicsWidget.ItemSendsGeometryChanges)
-        self.setCacheMode(self.DeviceCoordinateCache)
+        self.setCacheMode(QGraphicsItem.DeviceCoordinateCache)
         self.setAcceptHoverEvents(True)
         self.setZValue(1)
         self.setParentItem(owningNode)

@@ -13,9 +13,10 @@
 ## limitations under the License.
 
 
-from Qt.QtWidgets import *
-from Qt import QtCore, QtGui
-
+from PySide6.QtWidgets import *
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import QWidgetAction as QAction
 
 class KeyCaptureWidget(QPushButton):
     """docstring for KeyCaptureWidget."""

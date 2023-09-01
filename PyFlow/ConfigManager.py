@@ -16,8 +16,8 @@
 import os
 import json
 
-from Qt import QtCore, QtGui
-
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
 from PyFlow.Core.Common import *
 from PyFlow.Input import InputAction, InputManager, InputActionType
 

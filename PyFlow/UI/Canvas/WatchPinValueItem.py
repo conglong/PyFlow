@@ -1,7 +1,7 @@
-from Qt import QtCore
-from Qt import QtGui
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
 
-from Qt.QtWidgets import *
+from PySide6.QtWidgets import *
 
 from PyFlow.UI.Utils.stylesheet import editableStyleSheet
 from PyFlow.Core.Common import *

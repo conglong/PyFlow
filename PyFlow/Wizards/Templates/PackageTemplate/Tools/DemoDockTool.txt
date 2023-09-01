@@ -1,5 +1,5 @@
 from nine import str
-from Qt import QtGui
+import PySide6.QtGui import QtGui
 
 from PyFlow.UI.Tool.Tool import DockTool
 

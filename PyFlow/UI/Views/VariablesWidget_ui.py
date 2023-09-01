@@ -4,11 +4,14 @@
 # licensing of 'd:/GIT/PyFlow/PyFlow/UI/Views\VariablesWidget_ui.ui' applies.
 #
 # Created: Tue Jun 11 12:28:18 2019
-#      by: pyside2-uic  running on PySide2 5.12.0
+#      by: PySide6-uic  running on PySide6 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
 
-from Qt import QtCompat, QtCore, QtGui, QtWidgets
+import PySide6.QtCore as QtCore
+from PySide6.QtCore import QCoreApplication
+import PySide6.QtGui as QtGui
+import PySide6.QtWidgets as QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -50,7 +53,7 @@ class Ui_Form(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QtCompat.translate("Form", "Form", None, -1))
-        self.label.setText(QtCompat.translate("Form", "Create var", None, -1))
-        self.pbNewVar.setText(QtCompat.translate("Form", "+", None, -1))
+        Form.setWindowTitle(QCoreApplication.translate("Form", "Form", None, -1))
+        self.label.setText(QCoreApplication.translate("Form", "Create var", None, -1))
+        self.pbNewVar.setText(QCoreApplication.translate("Form", "+", None, -1))
 

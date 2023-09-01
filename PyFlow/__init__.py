@@ -19,15 +19,13 @@
 # this line adds extension-packages not installed inside the PyFlow directory
 __path__ = __import__('pkgutil').extend_path(__path__, __name__)
 
-import importlib
-import pkgutil
 import collections.abc as collections
-from copy import copy
-import os
 import json
+import os
+import pkgutil
+from copy import copy
 
-from PyFlow.Packages import *
-
+from .Packages import *
 
 __all__ = [
     "INITIALIZE",
@@ -109,7 +107,7 @@ def CreateRawPin(name, owningNode, dataType, direction, **kwds):
 
 
 def getRawNodeInstance(nodeClassName, packageName=None, libName=None, **kwargs):
-    from PyFlow.Core.NodeBase import NodeBase
+    from .Core.NodeBase import NodeBase
     package = GET_PACKAGE_CHECKED(packageName)
     # try find function first
     if libName is not None:
@@ -156,12 +154,12 @@ def getRawNodeInstance(nodeClassName, packageName=None, libName=None, **kwargs):
 
 
 def INITIALIZE(additionalPackageLocations=[], software=""):
-    from PyFlow.UI.Tool import REGISTER_TOOL
-    from PyFlow.UI.Widgets.InputWidgets import REGISTER_UI_INPUT_WIDGET_PIN_FACTORY
-    from PyFlow.UI.Canvas.UINodeBase import REGISTER_UI_NODE_FACTORY
-    from PyFlow.UI.Canvas.UIPinBase import REGISTER_UI_PIN_FACTORY
-    from PyFlow import ConfigManager
-    from Qt.QtWidgets import QMessageBox
+    from .UI.Tool import REGISTER_TOOL
+    from .UI.Widgets.InputWidgets import REGISTER_UI_INPUT_WIDGET_PIN_FACTORY
+    from .UI.Canvas.UINodeBase import REGISTER_UI_NODE_FACTORY
+    from .UI.Canvas.UIPinBase import REGISTER_UI_PIN_FACTORY
+    from . import ConfigManager
+    from PySide6.QtWidgets import QMessageBox
 
     packagePaths = Packages.__path__
 
@@ -204,13 +202,16 @@ def INITIALIZE(additionalPackageLocations=[], software=""):
 
     packagePaths.extend(additionalPackageLocations)
 
+    print(packagePaths)
     for importer, modname, ispkg in pkgutil.iter_modules(packagePaths):
         try:
-            if ispkg:
-                mod = importer.find_module(modname).load_module(modname)
-                package = getattr(mod, modname)()
-                __PACKAGES[modname] = package
-                __PACKAGE_PATHS[modname] = os.path.normpath(mod.__path__[0])
+            if ispkg and importer and getattr(importer, "find_module", None):
+                print(f"{importer} find_module {modname} load_module {modname}")
+                if getattr(imp := importer.find_module(modname), "load_module"):
+                    mod = imp.load_module(modname)
+                    package = getattr(mod, modname)()
+                    __PACKAGES[modname] = package
+                    __PACKAGE_PATHS[modname] = os.path.normpath(mod.__path__[0])
         except Exception as e:
             QMessageBox.critical(None, str("Fatal error"), "Error On Module %s :\n%s" % (modname, str(e)))
             continue

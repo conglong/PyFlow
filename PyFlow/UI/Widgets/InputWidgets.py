@@ -13,15 +13,15 @@
 ## limitations under the License.
 
 
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import QWidget
-from Qt.QtWidgets import QGridLayout
-from Qt.QtWidgets import QHBoxLayout
-from Qt.QtWidgets import QSpacerItem
-from Qt.QtWidgets import QSizePolicy
-from Qt.QtWidgets import QPushButton
-from Qt.QtWidgets import QMenu
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QGridLayout
+from PySide6.QtWidgets import QHBoxLayout
+from PySide6.QtWidgets import QSpacerItem
+from PySide6.QtWidgets import QSizePolicy
+from PySide6.QtWidgets import QPushButton
+from PySide6.QtWidgets import QMenu
 
 from PyFlow.Core.Common import *
 
@@ -30,7 +30,7 @@ UI_INPUT_WIDGET_PINS_FACTORIES = {}
 
 
 class IInputWidget(object):
-    def __init__(self):
+    def __init__(self, parent=None):
         super(IInputWidget, self).__init__()
 
     def widgetVariant(self):

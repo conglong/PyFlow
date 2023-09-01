@@ -13,9 +13,9 @@
 ## limitations under the License.
 
 
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import *
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import *
 from docutils import core
 
 

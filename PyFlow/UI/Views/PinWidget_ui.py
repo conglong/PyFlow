@@ -4,11 +4,16 @@
 # licensing of 'd:/GIT/PyFlow/PyFlow/UI/Views\PinWidget_ui.ui' applies.
 #
 # Created: Tue Jun 11 12:28:18 2019
-#      by: pyside2-uic  running on PySide2 5.12.0
+#      by: PySide6-uic  running on PySide6 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
 
-from Qt import QtCompat, QtCore, QtGui, QtWidgets
+import PySide6.QtGui as QtGui
+
+import PySide6.QtCore as QtCore
+from PySide6.QtCore import QCoreApplication
+
+import PySide6.QtWidgets as QtWidgets
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -57,8 +62,8 @@ class Ui_Form(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QtCompat.translate("Form", "Form", None, -1))
-        self.lePinName.setText(QtCompat.translate("Form", "pinName", None, -1))
-        self.cbHideLabel.setToolTip(QtCompat.translate("Form", "should hide label", None, -1))
-        self.cbHideLabel.setText(QtCompat.translate("Form", "hide label", None, -1))
+        Form.setWindowTitle(QCoreApplication.translate("Form", "Form", None, -1))
+        self.lePinName.setText(QCoreApplication.translate("Form", "pinName", None, -1))
+        self.cbHideLabel.setToolTip(QCoreApplication.translate("Form", "should hide label", None, -1))
+        self.cbHideLabel.setText(QCoreApplication.translate("Form", "hide label", None, -1))
 

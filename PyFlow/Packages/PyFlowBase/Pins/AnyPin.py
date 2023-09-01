@@ -15,7 +15,7 @@
 
 from blinker import Signal
 import json
-from Qt import QtGui
+import PySide6.QtGui as QtGui
 from nine import str
 
 from PyFlow.Core import PinBase

@@ -19,10 +19,10 @@ import os
 import uuid
 import logging
 
-from Qt.QtWidgets import QAction
-from Qt.QtWidgets import QFileDialog
-from Qt.QtWidgets import QInputDialog
-from Qt import QtCore
+from PySide6.QtWidgets import QWidgetAction as QAction
+from PySide6.QtWidgets import QFileDialog
+from PySide6.QtWidgets import QInputDialog
+import PySide6.QtCore as QtCore
 
 from PyFlow import GET_PACKAGES
 from PyFlow import GET_PACKAGE_PATH

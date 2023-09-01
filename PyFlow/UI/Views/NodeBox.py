@@ -21,9 +21,9 @@ try:
 except:
     from inspect import getargspec
 
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import *
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import *
 
 from PyFlow import GET_PACKAGES
 from PyFlow import GET_PACKAGE_PATH

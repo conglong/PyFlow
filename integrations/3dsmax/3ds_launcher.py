@@ -1,8 +1,8 @@
 import ptvsd
 import pymxs
 from PyFlow.App import PyFlow
-from PySide2 import QtWidgets
-from PySide2 import QtCore
+from PySide6 import QtWidgets
+from PySide6 import QtCore
 
 ptvsd.enable_attach(address=('0.0.0.0', 3000), redirect_output=True)
 

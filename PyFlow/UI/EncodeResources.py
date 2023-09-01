@@ -16,13 +16,13 @@
 import os
 import sys
 import subprocess
-from Qt import __binding__
+__binding__ = "PySide6"
 
 binding = __import__(__binding__)
 path = os.path.dirname(binding.__file__)
 
-if __binding__ == "PySide2":
-    app = 'pyside2-rcc.exe'
+if __binding__ == "PySide6":
+    app = 'PySide6-rcc.exe'
 elif __binding__ == "PySide":
     app = 'pyside-rcc.exe'
 elif __binding__ == "PyQt4":

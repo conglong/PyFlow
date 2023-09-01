@@ -16,8 +16,8 @@
 from collections import Counter
 from collections import defaultdict
 
-from Qt import QtCore, QtGui
-
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
 from PyFlow.Core.Common import *
 
 
@@ -122,14 +122,14 @@ class InputAction(object):
         saveData = {}
         saveData["name"] = self._name
         saveData["group"] = self._group
-        saveData["mouse"] = int(self.__data["mouse"])
+        saveData["mouse"] = int(self.__data["mouse"].value)
         saveData["actionType"] = self.actionType.value
 
         key = self.__data["key"]
         saveData["key"] = int(key) if key is not None else None
 
         modifiersList = self._modifiersToList(self.__data["modifiers"])
-        saveData["modifiers"] = [int(i) for i in modifiersList]
+        saveData["modifiers"] = [int(i.value) for i in modifiersList]
         return saveData
 
     def fromJson(self, jsonData):

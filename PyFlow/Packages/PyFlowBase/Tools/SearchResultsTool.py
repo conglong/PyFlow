@@ -14,10 +14,10 @@
 
 
 from nine import str
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import *
-
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import *
+from PySide6.QtWidgets import QWidgetAction as QAction
 from PyFlow.Packages.PyFlowBase.Tools import RESOURCES_DIR
 from PyFlow.UI.Tool.Tool import DockTool
 from PyFlow.UI.Widgets.PropertiesFramework import *

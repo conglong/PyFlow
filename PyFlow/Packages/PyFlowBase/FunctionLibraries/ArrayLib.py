@@ -114,6 +114,12 @@ class ArrayLib(FunctionLibraryBase):
         return sum(Value)
 
     @staticmethod
+    @IMPLEMENT_NODE(returns=('AnyPin', None, {PinSpecifires.CONSTRAINT: '1'}), meta={NodeMeta.CATEGORY: 'Array', NodeMeta.KEYWORDS: []})
+    def arrayMax(Value=('AnyPin', [], {PinSpecifires.CONSTRAINT: '1', PinSpecifires.SUPPORTED_DATA_TYPES: ["FloatPin", "IntPin"]})):
+        """Python **max()** function."""
+        return max(Value)
+
+    @staticmethod
     @IMPLEMENT_NODE(returns=('AnyPin', [], {PinSpecifires.CONSTRAINT: '1', PinSpecifires.ENABLED_OPTIONS: PinOptions.ArraySupported | PinOptions.AllowAny}),
                     meta={NodeMeta.CATEGORY: 'Array', NodeMeta.KEYWORDS: ['in']})
     def arraySlice(ls=('AnyPin', [], {PinSpecifires.CONSTRAINT: '1', PinSpecifires.ENABLED_OPTIONS: PinOptions.ArraySupported | PinOptions.AllowAny}),

@@ -18,8 +18,9 @@ import json
 from types import MethodType
 import uuid
 
-from Qt import QtCore, QtGui
-from Qt.QtWidgets import (
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import (
     QListWidget,
     QListWidgetItem,
     QWidget,

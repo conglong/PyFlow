@@ -14,9 +14,9 @@
 
 
 import weakref
-from Qt import QtCore
-from Qt import QtGui
-from Qt import QtWidgets
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+import PySide6.QtWidgets as QtWidgets
 from PyFlow.UI.Canvas.Painters import NodePainter
 from PyFlow.UI.Canvas.UINodeBase import UINodeBase
 from PyFlow.UI.Widgets.QtSliders import pyf_RampColor, pyf_ColorSlider

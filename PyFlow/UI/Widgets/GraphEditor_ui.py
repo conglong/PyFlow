@@ -4,11 +4,14 @@
 # licensing of 'd:/GIT/PyFlow/PyFlow/UI/Widgets\GraphEditor_ui.ui' applies.
 #
 # Created: Tue Jun 11 12:28:18 2019
-#      by: pyside2-uic  running on PySide2 5.12.0
+#      by: PySide6-uic  running on PySide6 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
 
-from Qt import QtCompat, QtCore, QtGui, QtWidgets
+import PySide6.QtGui as QtGui
+import PySide6.QtCore as QtCore
+from PySide6.QtCore import QCoreApplication
+import PySide6.QtWidgets as QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -92,8 +95,8 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtCompat.translate("MainWindow", "PyFlow", None, -1))
-        self.label_2.setText(QtCompat.translate("MainWindow", "Name:", None, -1))
-        self.label.setText(QtCompat.translate("MainWindow", "Category:", None, -1))
-        self.toolBar.setWindowTitle(QtCompat.translate("MainWindow", "toolBar", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", "PyFlow", None, -1))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", "Name:", None, -1))
+        self.label.setText(QCoreApplication.translate("MainWindow", "Category:", None, -1))
+        self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", "toolBar", None, -1))
 

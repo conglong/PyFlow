@@ -1,6 +1,6 @@
-from Qt import QtCore
-from Qt import QtGui
-from Qt.QtWidgets import *
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+from PySide6.QtWidgets import *
 
 from PyFlow.UI.Canvas.UICommon import *
 from PyFlow.UI.Utils.stylesheet import editableStyleSheet
@@ -94,9 +94,10 @@ class CanvasBase(QGraphicsView):
         topLeft = xfo.map(self.rect().topLeft())
         bottomRight = xfo.map(self.rect().bottomRight())
         center = (topLeft + bottomRight) * 0.5
-        zoomFactor = 1.0 + event.delta() * self._mouseWheelZoomRate
+        if event.hasPixelDelta():
+            zoomFactor = 1.0 + event. pixelDelta() * self._mouseWheelZoomRate
 
-        self.zoom(zoomFactor)
+            self.zoom(zoomFactor)
 
     def zoom(self, scale_factor):
         self.factor = self.transform().m22()

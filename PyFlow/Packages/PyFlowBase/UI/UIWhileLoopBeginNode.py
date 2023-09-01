@@ -13,9 +13,9 @@
 ## limitations under the License.
 
 import uuid
-from Qt import QtGui
-from Qt import QtCore
-from Qt.QtWidgets import *
+import PySide6.QtGui as QtGui
+import PySide6.QtCore as QtCore
+from PySide6.QtWidgets import *
 from PyFlow.UI.Utils.stylesheet import Colors
 from PyFlow.UI.Canvas.Painters import NodePainter
 from PyFlow.UI.Canvas.UINodeBase import UINodeBase

@@ -9,4 +9,8 @@ PyFlow/Configs/
 docs/build/
 docs/source/_build/
 docs/build_docs_env.bat
-__pycache__/
+__pycache__
+build/
+dist/
+PyFlow.egg-info/
+*.pygraph

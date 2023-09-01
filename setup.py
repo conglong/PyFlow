@@ -26,6 +26,6 @@ setup(
     classifiers=[
         'License :: Appache-2.0'
     ],
-    install_requires=["enum ; python_version<'3.4'", "Qt.py", "blinker", "nine", "docutils"],
-    extra_requires=["PySide2"]
+    install_requires=["blinker", "nine", "docutils"],
+    extra_requires=["PySide6"]
 )

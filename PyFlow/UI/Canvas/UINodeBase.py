@@ -1,5 +1,5 @@
 ## Copyright 2015-2019 Ilgar Lunin, Pedro Cabrera
-
+from PySide6.QtSvgWidgets import QGraphicsSvgItem
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
 ## You may obtain a copy of the License at
@@ -15,10 +15,10 @@
 
 from nine import str
 import logging
-from Qt import QtCore
-from Qt import QtGui
-from Qt import QtSvg
-from Qt.QtWidgets import *
+import PySide6.QtCore as QtCore
+import PySide6.QtGui as QtGui
+import PySide6.QtSvg as QtSvg
+from PySide6.QtWidgets import *
 from PyFlow.ConfigManager import ConfigManager
 from PyFlow.Core.Common import *
 from PyFlow.UI.Canvas.UIPinBase import (
@@ -55,10 +55,10 @@ class CollapseNodeActionButton(NodeActionButtonBase):
             self.svgIcon.setElementId("Collapse")
 
 
-class NodeNameValidator(QtGui.QRegExpValidator):
+class NodeNameValidator(QtGui.QRegularExpressionValidator):
     """docstring for NodeNameValidator."""
     def __init__(self, parent=None):
-        super(NodeNameValidator, self).__init__(QtCore.QRegExp('^[a-zA-Z][a-zA-Z0-9_]*$'), parent)
+        super(NodeNameValidator, self).__init__(QtCore.QRegularExpression('^[a-zA-Z][a-zA-Z0-9_]*$'), parent)
 
 
 class InputTextField(QGraphicsTextItem):
@@ -68,7 +68,7 @@ class InputTextField(QGraphicsTextItem):
     def __init__(self, text, node, parent=None, singleLine=False, validator=None):
         super(InputTextField, self).__init__(text, parent)
         self.node = node
-        self.setFlags(QGraphicsWidget.ItemSendsGeometryChanges | QGraphicsWidget.ItemIsSelectable)
+        self.setFlags(QGraphicsItem.ItemSendsGeometryChanges | QGraphicsItem.ItemIsSelectable)
         self.singleLine = singleLine
         self.setObjectName("Nothing")
         self.origMoveEvent = self.mouseMoveEvent
@@ -357,7 +357,7 @@ class UINodeBase(QGraphicsWidget, IPropertiesViewSupport, IUINode):
 
         self.setLayout(self.nodeLayout)
 
-        self.svgIcon = QtSvg.QGraphicsSvgItem(self)
+        self.svgIcon = QGraphicsSvgItem(self)
         self.svgIcon.setPos(-6, -6)
 
         self._image = None

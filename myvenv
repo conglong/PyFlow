@@ -1,0 +1,6 @@
+PWD=`pwd`
+VP=${PWD}/venv/Scripts
+export PATH=$VP:$PATH
+PS1="(`basename \"$PWD\"`) ${PS1-}"
+export PS1
+hash -r 2>/dev/null

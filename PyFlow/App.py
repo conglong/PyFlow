@@ -26,9 +26,9 @@ import shutil
 from string import ascii_letters
 import random
 
-from Qt import QtGui
-from Qt import QtCore
-from Qt.QtWidgets import *
+import PySide6.QtGui as QtGui
+import PySide6.QtCore as QtCore
+from PySide6.QtWidgets import *
 
 from PyFlow import GET_PACKAGES
 from PyFlow.Core.Common import currentProcessorTime
@@ -50,7 +50,7 @@ from PyFlow.UI.Utils.stylesheet import editableStyleSheet
 from PyFlow.UI.ContextMenuGenerator import ContextMenuGenerator
 from PyFlow.UI.Widgets.PreferencesWindow import PreferencesWindow
 try:
-    from PyFlow.Packages.PyFlowBase.Tools.PropertiesTool import PropertiesTool
+    from .Packages.PyFlowBase.Tools.PropertiesTool import PropertiesTool
 except:
     pass
 from PyFlow.Wizards.PackageWizard import PackageWizard
@@ -102,7 +102,7 @@ class PyFlow(QMainWindow):
         self.edHistory = EditorHistory(self)
         self.edHistory.statePushed.connect(self.historyStatePushed)
         self.setWindowTitle(winTitle())
-        self.undoStack = QUndoStack(self)
+        self.undoStack = QtGui.QUndoStack(self)
         self.setContentsMargins(1, 1, 1, 1)
         self.graphManager = GraphManagerSingleton()
         self.canvasWidget = BlueprintCanvasWidget(self.graphManager.get(), self)
@@ -247,13 +247,13 @@ class PyFlow(QMainWindow):
 
     def onRequestFillProperties(self, propertiesFillDelegate):
         for toolInstance in self._tools:
-            if isinstance(toolInstance, PropertiesTool):
+            if toolInstance.__class__.__name__ == PropertiesTool.__name__:
                 toolInstance.clear()
                 toolInstance.assignPropertiesWidget(propertiesFillDelegate)
 
     def onRequestClearProperties(self):
         for toolInstance in self._tools:
-            if isinstance(toolInstance, PropertiesTool):
+            if toolInstance.__class__.__name__ == PropertiesTool.__name__:
                 toolInstance.clear()
 
     def getToolbar(self):
@@ -617,7 +617,7 @@ class PyFlow(QMainWindow):
                     # prevent to be garbage collected
                     instance.registerToolInstance(ToolInstance)
                     ToolInstance.setAppInstance(instance)
-                    action = QAction(instance)
+                    action = QtGui.QAction(instance)
                     action.setIcon(ToolInstance.getIcon())
                     action.setText(ToolInstance.name())
                     action.setToolTip(ToolInstance.toolTip())

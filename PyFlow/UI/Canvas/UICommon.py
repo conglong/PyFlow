@@ -17,7 +17,7 @@ from docutils import core
 from PyFlow import GET_PACKAGES
 from PyFlow.Core.Common import *
 from PyFlow.UI.Utils.stylesheet import Colors
-
+from PySide6 import QtCore
 
 # DEFAULT_WIDGET_VARIANT = "DefaultWidget"
 

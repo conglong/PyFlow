@@ -93,19 +93,19 @@ class PathLib(FunctionLibraryBase):
     @IMPLEMENT_NODE(returns=("FloatPin", 0.0), meta={NodeMeta.CATEGORY: 'Python|OS|Path|Time', NodeMeta.KEYWORDS: ["time", "file", "path"]})
     def getmtime(path=("StringPin", "", {PinSpecifires.INPUT_WIDGET_VARIANT: "PathWidget"})):
         '''Return the time of last modification of path. The return value is a number giving the number of seconds since the epoch (see the time module). Raise os.error if the file does not exist or is inaccessible.'''
-        return osPath.getmtime(path, path2)
+        return osPath.getmtime(path, )
 
     @staticmethod
     @IMPLEMENT_NODE(returns=("FloatPin", 0.0), meta={NodeMeta.CATEGORY: 'Python|OS|Path|Time', NodeMeta.KEYWORDS: ["time", "file", "path"]})
     def getctime(path=("StringPin", "", {PinSpecifires.INPUT_WIDGET_VARIANT: "PathWidget"})):
         '''Return the system’s ctime which, on some systems (like Unix) is the time of the last metadata change, and, on others (like Windows), is the creation time for path. The return value is a number giving the number of seconds since the epoch (see the time module). Raise os.error if the file does not exist or is inaccessible.'''
-        return osPath.getctime(path, path2)
+        return osPath.getctime(path, )
 
     @staticmethod
     @IMPLEMENT_NODE(returns=("IntPin", 0), meta={NodeMeta.CATEGORY: 'Python|OS|Path', NodeMeta.KEYWORDS: ["size", "file", "path"]})
     def getsize(path=("StringPin", "", {PinSpecifires.INPUT_WIDGET_VARIANT: "PathWidget"})):
         '''Return the size, in bytes, of path. Raise os.error if the file does not exist or is inaccessible.'''
-        return osPath.getctime(path, path2)
+        return osPath.getctime(path, )
 
     @staticmethod
     @IMPLEMENT_NODE(returns=("BoolPin", False), meta={NodeMeta.CATEGORY: 'Python|OS|Path|Test', NodeMeta.KEYWORDS: ["test", "file", "path"]})
@@ -117,7 +117,7 @@ class PathLib(FunctionLibraryBase):
     @IMPLEMENT_NODE(returns=("BoolPin", False), meta={NodeMeta.CATEGORY: 'Python|OS|Path|Test', NodeMeta.KEYWORDS: ["test", "file", "path"]})
     def isFile(path=("StringPin", "", {PinSpecifires.INPUT_WIDGET_VARIANT: "PathWidget"})):
         '''Return True if path is an existing regular file. This follows symbolic links, so both islink() and isfile() can be true for the same path.'''
-        return osPath.isFile(path)
+        return os.path.isfile(path)
 
     @staticmethod
     @IMPLEMENT_NODE(returns=("BoolPin", False), meta={NodeMeta.CATEGORY: 'Python|OS|Path|Test', NodeMeta.KEYWORDS: ["test", "folder", "Directory", "dir", "path"]})

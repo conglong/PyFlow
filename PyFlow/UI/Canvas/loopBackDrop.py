@@ -12,9 +12,9 @@
 ## See the License for the specific language governing permissions and
 ## limitations under the License.
 
-from Qt import QtGui
-from Qt import QtCore
-from Qt.QtWidgets import QGraphicsWidget
+import PySide6.QtGui as QtGui
+import PySide6.QtCore as QtCore
+from PySide6.QtWidgets import QGraphicsWidget
 
 
 class backDrop(QGraphicsWidget):
